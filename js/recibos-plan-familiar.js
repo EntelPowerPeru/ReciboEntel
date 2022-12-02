@@ -350,7 +350,8 @@ class RecibosPlanesFamiliares {
         behavior: "smooth",
       });
       btnPdfConvert.style.display = "block";
-      // containerReceiptGenerated.innerHTML = "";
+       
+      containerReceiptGenerated.innerHTML = "";
 
       if (parseFloat(getDiaCambio) < parseFloat(getFechaCiclo)) {
         diferenciaFechaCicloDiaCambio =
