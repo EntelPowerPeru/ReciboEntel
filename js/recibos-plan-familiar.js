@@ -627,7 +627,6 @@ class RecibosPlanesFamiliares {
       cantidadLineasBase = 0;
       this.$form.reset();
       btnPdfConvert.addEventListener("click", (e) => {
-        e.target.style.display = "none";
         let element = document.getElementById("pdf-recibo");
         let opt = {
           margin: 0.3,
