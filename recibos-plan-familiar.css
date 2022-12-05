@@ -10654,3 +10654,29 @@ html {
 .e-recibo-pf__form__button {
   margin-top: 20px;
 }
+
+/* Leyenda */
+.legend {
+  display: none;
+  color: #000;
+  font-size: .7rem;
+  font-style: italic;
+  margin: 1rem auto;
+}
+
+.legend__paragraph {
+  font-weight: bold;
+  margin: 0;
+}
+
+.legend__list {
+  margin: 0 0 .7rem;
+}
+
+.legend__item {
+  margin-left: 1rem;
+}
+
+.date {
+  color: #909091 !important;
+}

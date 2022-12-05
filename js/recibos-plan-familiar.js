@@ -117,7 +117,6 @@ class RecibosPlanesFamiliares {
     this.$button = this.$form.querySelector("button#e-button-enviar");
     this.$buttonReset = this.$form.querySelector("button#e-button-reset");
     this.$selectFamilyPlan = this.$form.querySelector("#plan-familiar");
-    this.$selectChangeMonth = this.$form.querySelector("#mes-cambio");
     this.$selectCustomerCycle = this.$form.querySelector("#ciclo-cliente");
   }
 
@@ -130,11 +129,6 @@ class RecibosPlanesFamiliares {
     dataPlanesFamiliares.forEach((x) => {
       this.$selectFamilyPlan.options.add(new Option(x.name, x.price));
     });
-    dataMesCambio.forEach((x) => {
-      let op = new Option(x.name, x.number);
-      op.setAttribute("dias", x.canDias);
-      this.$selectChangeMonth.options.add(op);
-    });
     dataCicloCliente.forEach((x) => {
       this.$selectCustomerCycle.options.add(new Option(x.name, x.fechaInicio));
     });
@@ -146,7 +140,6 @@ class RecibosPlanesFamiliares {
   mask() {
     $("#num-new-lines").mask("9");
     $("#num-base-lines").mask("9");
-    //$("#dia-cambio").mask("99");
     $("#num-new-lines").mask("W", {
       translation: {
         W: {
@@ -163,14 +156,33 @@ class RecibosPlanesFamiliares {
         },
       },
     });
-    $("#dia-cambio").mask("Z#", {
-      translation: {
-        Z: {
-          pattern: /[4-9]/
-        },
-      },
-    });
   }
+
+  obtenerFecha(input, tipo = "") {
+    const fecha = input.value.split("-");
+    let valor;
+
+    if (!fecha) {
+      return "";
+    }
+
+    switch (tipo) {
+      case "dia":
+        valor = Number(fecha[2]);
+        break;
+      case "mes":
+        valor = Number(fecha[1]);
+        break;
+      case "año":
+        valor = Number(fecha[0]);
+        break;
+      default:
+        valor = fecha.join("-");
+    }
+
+    return valor;
+  }
+
   generateReceipt() {
     let cantidadLineasBase = 0,
       cantidadLineasNuevas = 0;
@@ -181,12 +193,10 @@ class RecibosPlanesFamiliares {
 
     const valNumnewlines = document.querySelector("#num-new-lines");
     const valNumbaselines = document.querySelector("#num-base-lines");
-    const diaCambioInput = document.querySelector("#dia-cambio");
+    const fechaActivacion = document.querySelector("#fecha-activacion");
     const selectFamilyPlan = document.querySelector("select#plan-familiar");
-    const selectChangeMonth = document.querySelector("select#mes-cambio");
     const selectCustomerCycle = document.querySelector("select#ciclo-cliente");
 
-    const btnGenerate = document.querySelector("a#btn-generar");
     const btnGenerateRecibo = document.querySelector("#e-button-enviar");
     const linesGenerated = document.querySelector(
       ".recibos-plan-familiar__numberOfNewlinesBaseLines_generated"
@@ -206,71 +216,61 @@ class RecibosPlanesFamiliares {
     containerReceipt.style.display = "none";
     valNumnewlines.required = true;
     valNumbaselines.required = true;
-    diaCambioInput.required = true;
+    fechaActivacion.required = true;
     selectFamilyPlan.required = true;
-    selectChangeMonth.required = true;
     selectCustomerCycle.required = true;
+
     let validationIsNan = (e) => {
       return isNaN(parseInt(e.trim())) ? parseInt(0) : parseInt(e.trim());
     };
+
     let validationLineasInputs = (e) => {
       sumaLineas =
         validationIsNan(valNumnewlines.value) +
         validationIsNan(valNumbaselines.value);
-      if (e.value) {
-        if (
-          valNumbaselines.value >= 1 &&
-          valNumbaselines.value <= 5 &&
-          sumaLineas >= 1 &&
-          sumaLineas <= 5
-        ) {
-          // e.classList.remove("error");
-          btnGenerate.classList.remove("btn-generar-disable");
-          btnGenerate.classList.add("btn-generar-active");
 
-          cantidadLineasBase = valNumbaselines.value;
-          cantidadLineasNuevas = valNumnewlines.value;
-        } else {
-          // e.classList.add("error");
-          btnGenerate.classList.remove("btn-generar-active");
-          btnGenerate.classList.add("btn-generar-disable");
+      if (e.value && [1, 2, 3, 4, 5].includes(Number(valNumbaselines.value)) && [1, 2, 3, 4, 5].includes(sumaLineas)) {
+        cantidadLineasBase = valNumbaselines.value;
+        cantidadLineasNuevas = valNumnewlines.value;
+
+        if (e.id === "num-base-lines") {
+          generarLineas();
         }
-      }
-      if (btnGenerate.classList.contains("btn-generar-disable")) {
-        // linesGenerated.remove();
+      } else {
         linesGenerated.innerHTML = "";
         cantidadLineasBase = 0;
       }
     };
-    let generarLineas = (e) => {
-      if (e.classList.contains("btn-generar-active")) {
-        for (let w = 0, l = cantidadLineasBase; w < l; w++) {
-          let selectBasicPln = document.createElement("select");
-          selectBasicPln.name = "plan-base";
-          selectBasicPln.id = `plan-base${w}`;
-          selectBasicPln.required = true;
-          dataPlanesBase.forEach((x) => {
-            selectBasicPln.options.add(new Option(x.name, x.price));
-          });
 
-          let planBaseUnified = document.createElement("div");
-          planBaseUnified.classList.add(
-            "e-input",
-            "e-input--select",
-            "e-input--light",
-            "e-input--small"
-          );
-          planBaseUnified.id = `selectContainer${w}`;
+    let generarLineas = () => {
+      document.querySelector(".legend").style.display = "block";
 
-          planBaseUnified.appendChild(selectBasicPln);
-          linesGenerated.appendChild(planBaseUnified);
-          // linesGenerated.insertAdjacentHTML("beforeend", planBaseUnified);
-        }
+      linesGenerated.innerHTML = "";
 
-        e.classList.remove("btn-generar-active");
-        e.classList.add("btn-generar-disable");
+      for (let w = 0, l = cantidadLineasBase; w < l; w++) {
+        let selectBasicPln = document.createElement("select");
+        selectBasicPln.name = "plan-base";
+        selectBasicPln.id = `plan-base${w}`;
+        selectBasicPln.required = true;
+        dataPlanesBase.forEach((x) => {
+          selectBasicPln.options.add(new Option(x.name, x.price));
+        });
+
+        let planBaseUnified = document.createElement("div");
+        planBaseUnified.classList.add(
+          "e-input",
+          "e-input--select",
+          "e-input--light",
+          "e-input--small"
+        );
+        planBaseUnified.id = `selectContainer${w}`;
+
+        planBaseUnified.appendChild(selectBasicPln);
+        linesGenerated.appendChild(planBaseUnified);
+        // linesGenerated.insertAdjacentHTML("beforeend", planBaseUnified);
       }
     };
+
     let validationInputsForm = () => {
       const selectBasicplan = document.querySelector(
         "select[name='plan-base']"
@@ -279,9 +279,9 @@ class RecibosPlanesFamiliares {
         if (
           valNumnewlines.value &&
           valNumbaselines.value &&
-          diaCambioInput.value &&
+          this.obtenerFecha(fechaActivacion, "dia") &&
           selectFamilyPlan.value &&
-          selectChangeMonth.value &&
+          this.obtenerFecha(fechaActivacion, "mes") &&
           selectCustomerCycle.value &&
           selectBasicplan.value
         ) {
@@ -295,9 +295,9 @@ class RecibosPlanesFamiliares {
         if (
           valNumnewlines.value &&
           valNumbaselines.value &&
-          diaCambioInput.value &&
+          this.obtenerFecha(fechaActivacion, "dia") &&
           selectFamilyPlan.value &&
-          selectChangeMonth.value &&
+          this.obtenerFecha(fechaActivacion, "mes") &&
           selectCustomerCycle.value
         ) {
           btnGenerateRecibo.classList.remove("e-button--disabled");
@@ -323,23 +323,22 @@ class RecibosPlanesFamiliares {
           .value;
       let alphabetCounter = 0;
       const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
-      let getDiasMesCambioActual =
-        this.$selectChangeMonth[
-          this.$selectChangeMonth.selectedIndex
-        ].getAttribute("dias");
+
+      let getDiasMesCambioActual = dataMesCambio.find(e => this.obtenerFecha(fechaActivacion, "mes") === e.number).canDias;
 
       let getDiasMesCambioAnterior;
-      this.$selectChangeMonth[this.$selectChangeMonth.selectedIndex].value == 1
-        ? (getDiasMesCambioAnterior = 31)
-        : (getDiasMesCambioAnterior =
-          this.$selectChangeMonth[
-            this.$selectChangeMonth.selectedIndex
-          ].previousElementSibling.getAttribute("dias"));
+
+      if (this.obtenerFecha(fechaActivacion, "mes") === 1) {
+        getDiasMesCambioAnterior = 31;
+      } else {
+        const mes_anterior = this.obtenerFecha(fechaActivacion, "mes") - 1;
+        getDiasMesCambioAnterior = dataMesCambio.find(e => mes_anterior === e.number).canDias;
+      }
 
       let getFechaCiclo =
         this.$selectCustomerCycle[this.$selectCustomerCycle.selectedIndex]
           .value;
-      let getDiaCambio = diaCambioInput.value;
+      let getDiaCambio = this.obtenerFecha(fechaActivacion, "dia");
       event.preventDefault();
       btnGenerateRecibo.classList.remove("e-button--orange");
       btnGenerateRecibo.classList.add("e-button--disabled");
@@ -350,7 +349,7 @@ class RecibosPlanesFamiliares {
         behavior: "smooth",
       });
       btnPdfConvert.style.display = "block";
-       
+
       containerReceiptGenerated.innerHTML = "";
 
       if (parseFloat(getDiaCambio) < parseFloat(getFechaCiclo)) {
@@ -653,18 +652,11 @@ class RecibosPlanesFamiliares {
       });
     };
     linesGeneratedInputs.forEach(function (input) {
-      input.addEventListener("input", (f) => {
+      input.addEventListener("keyup", (f) => {
         validationLineasInputs(f.target);
       });
     });
-    btnGenerate.addEventListener("click", (f) => {
-      generarLineas(f.target);
-    });
-    valNumbaselines.addEventListener("keyup", (f) => {
-      if (f.currentTarget.value && [1, 2, 3, 4, 5].includes(Number(f.currentTarget.value))) {
-        btnGenerate.click();
-      }
-    });
+
     inputsForm.forEach(function (input) {
       input.addEventListener("input", () => {
         validationInputsForm();

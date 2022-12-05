@@ -75,32 +75,23 @@
                   class="e-input--solid e-input--solid--white e-input--light e-input--small recibos-plan-familiar_num-lines"
                   type="text" maxlength="60" name="num-base-lines" autocomplete="off" id="num-base-lines">
                 <div></div><span>N° de Líneas Base</span>
-                <div class="recibos-plan-familiar__numberOfNewlinesBaseLines__button"><a class="btn-generar-disable"
-                    id="btn-generar">Generar</a></div>
               </div>
             </div>
             <div class="recibos-plan-familiar__numberOfNewlinesBaseLines_generated"></div>
             <div class="recibos-plan-familiar__numberOfNewlinesBaseLines_changedate">
-              <p class="e-tc--white e-fw-bolder">Fecha de Activación</p>
               <div class="recibos-plan-familiar__numberOfNewlinesBaseLines_changedate_items">
                 <div
                   class="e-input e-input--solid e-input--solid--white e-input--light e-input--small recibos-plan-familiar_num-lines">
-                  <input
-                    class="e-input--solid e-input--solid--white e-input--light e-input--small recibos-plan-familiar_num-lines"
-                    type="text" maxlength="1" name="dia-cambio" autocomplete="off" id="dia-cambio" required>
-                  <div></div><span>Día de Activación</span>
-                </div>
-                <div class="e-input e-input--select e-input--light e-input--small">
-                  <select id="mes-cambio" name="mes-cambio">
-                    <option value="">Mes de Activación </option>
-                  </select>
+                  
+                    <input type="date" required name="fecha-activacion" class="e-input--solid e-input--solid--white e-input--light e-input--small date" id="fecha-activacion" />  
+                  <div></div>
+                  <span>Fecha de activación</span>
                 </div>
                 <div class="e-input e-input--select e-input--light e-input--small">
                   <select id="ciclo-cliente" name="ciclo-cliente">
                     <option value="">Ciclo de cliente </option>
                   </select>
                 </div>
-              </div>
             </div>
             <div class="recibos-plan-familiar__button">
               <button class="e-button e-button--disabled" id="e-button-enviar" type="button">GENERAR RECIBO</button>
@@ -110,6 +101,42 @@
         </div>
       </div>
     </section>
+
+    <div class="e-container legend">
+      <p class="legend__paragraph">* ¿Cuales son los cíclos de facturación
+        del cliente?</p>
+      <ul class="legend__list">
+        <li class="legend__item">- Ciclo 01: Del 01 al 28/29/30 o 31</li>
+        <li class="legend__item">- Ciclo 04: Del 09 al 08</li>
+        <li class="legend__item">- Ciclo 03: Del 16 al 15</li>
+        <li class="legend__item">- Ciclo 05: Del 22 al 23</li>
+      </ul>
+
+      <p class="legend__paragraph">* ¿Que es el prorrateo?</p>
+      <ul class="legend__list">
+        <li class="legend__item">
+          - Es el consumo de días adicionales antes que inicie tu periodo de facturación. Se
+          calcula desde el día que se activa la línea o se realiza el cambio de plan hasta un día antes del inicio
+          del ciclo de facturación
+        </li>
+      </ul>
+
+      <p class="legend__paragraph">* Para mejorar la experiencia del
+        cliente plan familia toma en cuenta lo siguiente:</p>
+      <ul class="legend__list">
+        <li class="legend__item">- Recordar al cliente que adquiriendo el plan familia, perderá otros
+          descuentos que ya venga recibiendo
+          (Ejm. Descuento por portabilidad, LLAA, etc.)</li>
+        <li class="legend__item">- Asegúrate de registrar todas las líneas del cliente en un mismo perfil de
+          facturación. NO USAR
+          MULTISESIÓN</li>
+        <li class="legend__item">- Si es un cliente de la base, asegúrate de registrar el cambio de plan
+          para
+          todas las líneas, una línea
+          por cada orden</li>
+      </ul>
+    </div>
+
     <div class="trapezoid-mob">
       <picture class="e-lazy__img heart-rotate">
         <source
@@ -138,40 +165,12 @@
           </div>
         </div>
         <div class="recibo_line_description recibo"></div>
-        <div data-html2canvas-ignore="true" style="color: #000; margin-top: 1rem;">
-          <p style="font-style: italic; font-size: .7rem; margin-bottom: 1px;">* ¿Cuales son los cíclos de facturación
-            del cliente?</p>
-          <ul style="font-style: italic; font-size: .7rem;">
-            <li style="margin-left: 1rem;">- Ciclo 01: Del 01 al 28/29/30 o 31</li>
-            <li style="margin-left: 1rem;">- Ciclo 04: Del 09 al 08</li>
-            <li style="margin-left: 1rem;">- Ciclo 03: Del 16 al 15</li>
-            <li style="margin-left: 1rem;">- Ciclo 05: Del 22 al 23</li>
-          </ul>
-
-          <p style="font-style: italic; font-size: .7rem;">
-            * ¿Que es el prorrateo?, es el consumo de días adicionales antes que inicie tu periodo de facturación. Se
-            calcula desde el día que se activa la línea o se realiza el cambio de plan hasta un día antes del inicio del
-            ciclo de facturación
-          </p>
-          <p style="font-style: italic; font-size: .7rem; margin-bottom: 1px;">* Para mejorar la experiencia del
-            cliente plan familia toma en cuenta lo siguiente:</p>
-          <ul style="font-style: italic; font-size: .7rem;">
-            <li style="margin-left: 1rem;">- Recordar al cliente que adquiriendo el plan familia, perderá otros
-              descuentos que ya venga recibiendo
-              (Ejm. Descuento por portabilidad, LLAA, etc.)</li>
-            <li style="margin-left: 1rem;">- Asegúrate de registrar todas las líneas del cliente en un mismo perfil de
-              facturación. NO USAR
-              MULTISESIÓN</li>
-            <li style="margin-left: 1rem;">- Si es un cliente de la base, asegúrate de registrar el cambio de plan para
-              todas las líneas, una línea
-              por cada orden</li>
-          </ul>
-        </div>
-        <div data-html2canvas-ignore="true" class="recibo_btn_convert_pdf"><a class="e-link e--orange" id="btn-convert-html-to-pdf"
-            href="javascript:void(0)"> Descargar en pdf</a></div>
+        <div data-html2canvas-ignore="true" class="recibo_btn_convert_pdf"><a class="e-link e--orange"
+            id="btn-convert-html-to-pdf" href="javascript:void(0)"> Descargar en pdf</a></div>
       </div>
     </section>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
