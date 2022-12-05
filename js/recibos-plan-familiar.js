@@ -220,6 +220,8 @@ class RecibosPlanesFamiliares {
     selectFamilyPlan.required = true;
     selectCustomerCycle.required = true;
 
+    fechaActivacion.max = new Date().toISOString().split("T")[0];
+
     let validationIsNan = (e) => {
       return isNaN(parseInt(e.trim())) ? parseInt(0) : parseInt(e.trim());
     };
