@@ -6057,7 +6057,7 @@ textarea, .choices__inner {
   border: 1px solid #9e9fa1;
   color: #909091;
   font-weight: 500;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
   padding: 0 12px 0 20px;
   width: 100%;
   display: block;
@@ -6232,7 +6232,7 @@ textarea:focus {
 }
 .e-input {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .e-input--e {
   margin-bottom: 10px;
@@ -6825,7 +6825,7 @@ textarea:focus {
 .e-input--medium optgroup,
 .e-input--medium select,
 .e-input--medium textarea {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
 @media only screen and (min-width: 768px) {
   .e-input--small input:not([type=radio]):not([type=checkbox]):not([type=file]),
@@ -6861,7 +6861,7 @@ textarea:focus {
 .e-input--light select,
 .e-input--light textarea {
   border-color: #e0e0e0;
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
 .e-input--light input:not([type=radio]):not([type=checkbox]):not([type=file]) ~ span.js--active,
 .e-input--light optgroup ~ span.js--active,
@@ -9828,13 +9828,13 @@ body:before {
   color: #4E5057 !important;
 }
 .recibos-plan-familiar__section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 @media only screen and (min-width: 768px) {
   .recibos-plan-familiar__section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 .recibos-plan-familiar__section p {
@@ -10170,31 +10170,31 @@ ul.e-list-icon li:before {
 }
 .recibos-plan-familiar-banner h2.e-title {
   font-weight: 800;
-  font-size: 24px !important;
+  font-size: 25px !important;
 }
 @media only screen and (min-width: 768px) {
   .recibos-plan-familiar-banner h2.e-title {
-    font-size: 36px !important;
+    font-size: 30px !important;
   }
 }
 @media only screen and (min-width: 1024px) {
   .recibos-plan-familiar-banner h2.e-title {
-    font-size: 48px !important;
+    font-size: 35px !important;
   }
 }
 .recibos-plan-familiar-banner p {
-  font-size: 16px !important;
+  font-size: 10px !important;
   color: #191919;
   text-shadow: 0px 4px 14px rgba(255, 255, 255, 0.1);
 }
 @media only screen and (min-width: 768px) {
   .recibos-plan-familiar-banner p {
-    font-size: 20px !important;
+    font-size: 15px !important;
   }
 }
 @media only screen and (min-width: 1024px) {
   .recibos-plan-familiar-banner p {
-    font-size: 24px !important;
+    font-size: 20px !important;
   }
 }
 .recibos-plan-familiar-form {
@@ -10205,18 +10205,18 @@ ul.e-list-icon li:before {
   padding-top: 0;
   padding-bottom: 0;
   max-width: 1110px;
-  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-right: auto;
   margin-left: auto;
 }
 @media only screen and (min-width: 768px) {
   .recibos-plan-familiar-form {
-    margin-bottom: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 .recibos-plan-familiar-form .brightness {
-  padding-top: 50px;
-  padding-bottom: 50px;
   animation: move-bg 5s linear 5s infinite normal;
   background-image: url(img/recibos-plan-familiar-brightness-mob.png);
 }
@@ -10249,16 +10249,16 @@ ul.e-list-icon li:before {
 .recibos-plan-familiar-form .e-container h2.e-title {
   font-weight: 700;
   letter-spacing: 0.005em;
-  font-size: 24px !important;
+  font-size: 15px !important;
 }
 @media only screen and (min-width: 768px) {
   .recibos-plan-familiar-form .e-container h2.e-title {
-    font-size: 29px !important;
+    font-size: 25px !important;
   }
 }
 @media only screen and (min-width: 1024px) {
   .recibos-plan-familiar-form .e-container h2.e-title {
-    font-size: 34px !important;
+    font-size: 30px !important;
   }
 }
 .recibos-plan-familiar-form .recibos-plan-familiar__numberOfNewlinesBaseLines {
@@ -10344,14 +10344,14 @@ ul.e-list-icon li:before {
   width: 100%;
 }
 .recibos-plan-familiar-form .recibos-plan-familiar__numberOfNewlinesBaseLines_changedate_items div:nth-child(2) {
-  margin-left: 1rem;
+  /*margin-left: 1rem;*/
 }
 @media only screen and (min-width: 768px) {
   .recibos-plan-familiar-form .recibos-plan-familiar__numberOfNewlinesBaseLines_changedate_items div {
     width: 30% !important;
   }
   .recibos-plan-familiar-form .recibos-plan-familiar__numberOfNewlinesBaseLines_changedate_items div:nth-child(2) {
-    margin-right: 1rem;
+    /*margin-right: 1rem;*/
   }
 }
 .recibos-plan-familiar-form .recibos-plan-familiar__numberOfNewlinesBaseLines_generated {
@@ -10372,6 +10372,7 @@ ul.e-list-icon li:before {
 }
 .recibos-plan-familiar-form .recibos-plan-familiar__button {
   display: flex;
+  margin-top: 10px;
 }
 .recibos-plan-familiar-form .e-input label.error {
   display: block !important;
@@ -10657,7 +10658,6 @@ html {
 
 /* Leyenda */
 .legend {
-  display: none;
   color: #000;
   font-size: .7rem;
   font-style: italic;

@@ -245,8 +245,6 @@ class RecibosPlanesFamiliares {
     };
 
     let generarLineas = () => {
-      document.querySelector(".legend").style.display = "block";
-
       linesGenerated.innerHTML = "";
 
       for (let w = 0, l = cantidadLineasBase; w < l; w++) {
