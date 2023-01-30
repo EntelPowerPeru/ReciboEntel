@@ -1,3 +1,4 @@
+
 let dataPlanesFamiliares = [
   { name: "Entel Power Familiar+ 39.90", price: "39.9" },
   { name: "Entel Power Familiar+ 49.90", price: "49.9" },
@@ -6,13 +7,13 @@ let dataPlanesFamiliares = [
   { name: "Entel Power Familiar+ 74.90", price: "74.9" },
   { name: "Entel Power Familiar 89.90 SD", price: "89.9" },
   { name: "Entel Power Familiar 99.90 SD", price: "99.9" },
-  //{ name: "Entel Power Familiar 109.90", price: "109.9" },
-  { name: "Entel Power Familiar 129.90 SD", price: "129.9" },
-  //{ name: "Entel Power Familiar 159.90", price: "159.9" },
-  //{ name: "Entel Power Familiar 179.90", price: "179.9" },
-  //{ name: "Entel Power Familiar 199.90", price: "199.9" },
-  //{ name: "Entel Power Familiar 259.90", price: "259.9" },
-  //{ name: "Entel Power Familiar 299.90", price: "299.9" }
+  { name: "Entel Power Familiar 109.90", price: "109.9" },
+  { name: "Entel Power Familiar 129.90", price: "129.9" },
+  { name: "Entel Power Familiar 159.90", price: "159.9" },
+  { name: "Entel Power Familiar 179.90", price: "179.9" },
+  { name: "Entel Power Familiar 199.90", price: "199.9" },
+  { name: "Entel Power Familiar 259.90", price: "259.9" },
+  { name: "Entel Power Familiar 299.90", price: "299.9" }
 ];
 let dataMesCambio = [
   { name: "Enero", number: 1, canDias: 31 },
@@ -34,6 +35,7 @@ let dataCicloCliente = [
   { name: "Ciclo 3", fechaInicio: 16 },
   { name: "Ciclo 5", fechaInicio: 23 },
 ];
+
 
 let dataPlanesBase = [
   { name: "Selecciona un plan base", price: "" },
@@ -100,8 +102,10 @@ let dataPlanesBase = [
   { name: "Entel Power+ 59.90", price: "59.9" },
   { name: "Entel Power+ 74.90", price: "74.9" },
   { name: "Entel Power 89.90 SD", price: "89.9" },
-  { name: "Entel Power 99.90 SD", price: "99.9" },
+  { name: "Entel Power 99.90 SD", price: "99.9" }
 ];
+
+
 
 // import html2pdf from "html2pdf.js";
 
@@ -227,11 +231,7 @@ class RecibosPlanesFamiliares {
         validationIsNan(valNumnewlines.value) +
         validationIsNan(valNumbaselines.value);
 
-      if (
-        e.value &&
-        [1, 2, 3, 4, 5].includes(Number(valNumbaselines.value)) &&
-        [1, 2, 3, 4, 5].includes(sumaLineas)
-      ) {
+      if (e.value && [1, 2, 3, 4, 5].includes(Number(valNumbaselines.value)) && [1, 2, 3, 4, 5].includes(sumaLineas)) {
         cantidadLineasBase = valNumbaselines.value;
         cantidadLineasNuevas = valNumnewlines.value;
 
@@ -324,9 +324,7 @@ class RecibosPlanesFamiliares {
       let alphabetCounter = 0;
       const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
 
-      let getDiasMesCambioActual = dataMesCambio.find(
-        (e) => this.obtenerFecha(fechaActivacion, "mes") === e.number
-      ).canDias;
+      let getDiasMesCambioActual = dataMesCambio.find(e => this.obtenerFecha(fechaActivacion, "mes") === e.number).canDias;
 
       let getDiasMesCambioAnterior;
 
@@ -334,9 +332,7 @@ class RecibosPlanesFamiliares {
         getDiasMesCambioAnterior = 31;
       } else {
         const mes_anterior = this.obtenerFecha(fechaActivacion, "mes") - 1;
-        getDiasMesCambioAnterior = dataMesCambio.find(
-          (e) => mes_anterior === e.number
-        ).canDias;
+        getDiasMesCambioAnterior = dataMesCambio.find(e => mes_anterior === e.number).canDias;
       }
 
       let getFechaCiclo =
@@ -365,21 +361,21 @@ class RecibosPlanesFamiliares {
         dsctoPlanFamiliar = parseFloat(
           parseFloat(
             parseFloat(planHogarSeleccionadoPrice) /
-              parseFloat(getDiasMesCambioAnterior)
+            parseFloat(getDiasMesCambioAnterior)
           ) *
-            parseFloat(parseFloat(getFechaCiclo) - parseFloat(getDiaCambio)) *
-            parseFloat(parseFloat(sumaLineas) - 1) *
-            parseFloat(
-              parseFloat(parseFloat(planHogarSeleccionadoPrice) - 34.9) /
-                parseFloat(planHogarSeleccionadoPrice)
-            ) *
-            -1
+          parseFloat(parseFloat(getFechaCiclo) - parseFloat(getDiaCambio)) *
+          parseFloat(parseFloat(sumaLineas) - 1) *
+          parseFloat(
+            parseFloat(parseFloat(planHogarSeleccionadoPrice) - 29.9) /
+            parseFloat(planHogarSeleccionadoPrice)
+          ) *
+          -1
         );
 
         calcularProrrateo = parseFloat(
           (parseFloat(planHogarSeleccionadoPrice) /
             parseFloat(getDiasMesCambioAnterior)) *
-            (parseFloat(getFechaCiclo) - parseFloat(getDiaCambio))
+          (parseFloat(getFechaCiclo) - parseFloat(getDiaCambio))
         );
       } else {
         diferenciaFechaCicloDiaCambio =
@@ -395,27 +391,27 @@ class RecibosPlanesFamiliares {
               parseFloat(getDiaCambio) +
               parseFloat(getFechaCiclo)) *
             (parseFloat(sumaLineas) - 1) *
-            (parseFloat(planHogarSeleccionadoPrice) - 34.9)) /
+            (parseFloat(planHogarSeleccionadoPrice) - 29.9)) /
             parseFloat(planHogarSeleccionadoPrice)) *
           -1;
         calcularProrrateo = parseFloat(
           (parseFloat(planHogarSeleccionadoPrice) /
             parseFloat(getDiasMesCambioActual)) *
-            (parseFloat(getDiasMesCambioActual) +
-              (parseFloat(getFechaCiclo) - parseFloat(getDiaCambio)))
+          (parseFloat(getDiasMesCambioActual) +
+            (parseFloat(getFechaCiclo) - parseFloat(getDiaCambio)))
         );
       }
 
       let dsctoPrimerRecibo = parseFloat(
-        (parseFloat(planHogarSeleccionadoPrice) - 34.9) * -1
+        (parseFloat(planHogarSeleccionadoPrice) - 29.9) * -1
       ).toFixed(0);
 
       let cuentaCliente = `<div class="descripcion-plan-cuenta-cliente bg-DCECF4">
             <p class="e-tc--blue">Cuenta Cliente</p>
             <p class="e-tc--blue"></p>
             <p class="e-tc--blue">${parseFloat(dsctoPlanFamiliar).toFixed(
-              2
-            )}</p>
+        2
+      )}</p>
           </div>
           <div class="descripcion-plan-dscto-plan-familiar bg-white">
             <p></p>
@@ -433,54 +429,44 @@ class RecibosPlanesFamiliares {
       for (let w = 0, l = parseInt(valNumnewlines.value); w < l; w++) {
         let totalLineaNueva = parseFloat(
           parseFloat(planHogarSeleccionadoPrice) +
-            parseFloat(calcularProrrateo) +
-            parseFloat(dsctoPrimerRecibo)
+          parseFloat(calcularProrrateo) +
+          parseFloat(dsctoPrimerRecibo)
         ).toFixed(2);
         let TotalLineaNueva = (e) => {
           if (e == 0) {
             return parseFloat(
               parseFloat(planHogarSeleccionadoPrice) +
-                parseFloat(calcularProrrateo)
+              parseFloat(calcularProrrateo)
             ).toFixed(2);
           } else {
             return parseFloat(
               parseFloat(planHogarSeleccionadoPrice) +
-                parseFloat(calcularProrrateo) +
-                parseFloat(dsctoPrimerRecibo)
+              parseFloat(calcularProrrateo) +
+              parseFloat(dsctoPrimerRecibo)
             ).toFixed(2);
           }
         };
 
-        totalPagarPrimerRecibo +=
-          w == 0
-            ? parseFloat(
-                parseFloat(planHogarSeleccionadoPrice) +
-                  parseFloat(calcularProrrateo)
-              )
-            : parseFloat(
-                parseFloat(planHogarSeleccionadoPrice) +
-                  parseFloat(calcularProrrateo) +
-                  parseFloat(dsctoPrimerRecibo)
-              );
+        totalPagarPrimerRecibo += w == 0 ? parseFloat(parseFloat(planHogarSeleccionadoPrice) + parseFloat(calcularProrrateo))
+          : parseFloat(parseFloat(planHogarSeleccionadoPrice) + parseFloat(calcularProrrateo) + parseFloat(dsctoPrimerRecibo));
 
         let lineasNuevasUnified = `<div id="new_line_description_item${w}" class="recibo_new_line_description_item">
               <div class="descripcion-plan descripcion-plan-precio bg-DCECF4">
                 <p class="e-tc--blue">Línea Nueva ${alphabet[
-                  alphabetCounter
-                ].toUpperCase()}</p>
+            alphabetCounter
+          ].toUpperCase()}</p>
                 <p class="e-tc--blue">${planHogarSeleccionado}</p>
-                <p class="e-tc--blue">${
-                  w == 0
-                    ? parseFloat(
-                        parseFloat(planHogarSeleccionadoPrice) +
-                          parseFloat(calcularProrrateo)
-                      ).toFixed(2)
-                    : parseFloat(
-                        parseFloat(planHogarSeleccionadoPrice) +
-                          parseFloat(calcularProrrateo) +
-                          parseFloat(dsctoPrimerRecibo)
-                      ).toFixed(2)
-                }</p>
+                <p class="e-tc--blue">${w == 0
+            ? parseFloat(
+              parseFloat(planHogarSeleccionadoPrice) +
+              parseFloat(calcularProrrateo)
+            ).toFixed(2)
+            : parseFloat(
+              parseFloat(planHogarSeleccionadoPrice) +
+              parseFloat(calcularProrrateo) +
+              parseFloat(dsctoPrimerRecibo)
+            ).toFixed(2)
+          }</p>
               </div>
               <div class="descripcion-plan-plan bg-white">
                 <p></p>
@@ -517,7 +503,7 @@ class RecibosPlanesFamiliares {
               )[w].value
             ) /
               parseFloat(getDiasMesCambioAnterior)) *
-              parseFloat(diferenciaDiaCambioFechaCiclo)
+            parseFloat(diferenciaDiaCambioFechaCiclo)
           ).toFixed(2);
         } else {
           calcularCargoProrrateoBase = parseFloat(
@@ -527,7 +513,7 @@ class RecibosPlanesFamiliares {
               )[w].value
             ) /
               parseFloat(getDiasMesCambioActual)) *
-              (parseFloat(getDiaCambio) - parseFloat(getFechaCiclo))
+            (parseFloat(getDiaCambio) - parseFloat(getFechaCiclo))
           ).toFixed(2);
         }
         let calcularDevolucionProrrateo = parseFloat(
@@ -539,13 +525,13 @@ class RecibosPlanesFamiliares {
         ).toFixed(1);
         let calcularProrrateoPlanFamiliar = parseFloat(
           parseFloat(calcularProrrateo) +
-            parseFloat(calcularDevolucionProrrateo) +
-            parseFloat(calcularCargoProrrateoBase)
+          parseFloat(calcularDevolucionProrrateo) +
+          parseFloat(calcularCargoProrrateoBase)
         ).toFixed(2);
         let totalDsctMiPrimerRecibo = parseFloat(
           parseFloat(planHogarSeleccionadoPrice) +
-            parseFloat(calcularProrrateoPlanFamiliar) +
-            parseFloat(dsctoPrimerRecibo)
+          parseFloat(calcularProrrateoPlanFamiliar) +
+          parseFloat(dsctoPrimerRecibo)
         ).toFixed(2);
 
         let dsctoPrimerReciboHtmlBase = (e) => {
@@ -559,34 +545,30 @@ class RecibosPlanesFamiliares {
           if (e == 0) {
             return parseFloat(
               parseFloat(planHogarSeleccionadoPrice) +
-                parseFloat(calcularProrrateoPlanFamiliar)
+              parseFloat(calcularProrrateoPlanFamiliar)
             ).toFixed(2);
           } else {
             return parseFloat(
               parseFloat(planHogarSeleccionadoPrice) +
-                parseFloat(calcularProrrateoPlanFamiliar) +
-                parseFloat(dsctoPrimerRecibo)
+              parseFloat(calcularProrrateoPlanFamiliar) +
+              parseFloat(dsctoPrimerRecibo)
             ).toFixed(2);
           }
         };
 
-        totalPagarPrimerRecibo +=
-          valNumnewlines.value == 0
-            ? parseFloat(TotalDsctMiPrimerRecibo(w))
-            : parseFloat(totalDsctMiPrimerRecibo);
+        totalPagarPrimerRecibo += valNumnewlines.value == 0 ? parseFloat(TotalDsctMiPrimerRecibo(w)) : parseFloat(totalDsctMiPrimerRecibo);
         // dsctoPrimerReciboHtmlBase = dsctoPrimerReciboHtml;
 
         let lineasBaseUnified = `<div id="new_line_description_item${w}" class="recibo_new_line_description_item">
               <div class="descripcion-plan descripcion-plan-precio bg-DCECF4">
                 <p class="e-tc--blue">Línea Base ${alphabet[
-                  alphabetCounter
-                ].toUpperCase()}</p>
+            alphabetCounter
+          ].toUpperCase()}</p>
                 <p class="e-tc--blue">${planHogarSeleccionado}</p>
-                <p class="e-tc--blue">${
-                  valNumnewlines.value == 0
-                    ? TotalDsctMiPrimerRecibo(w)
-                    : totalDsctMiPrimerRecibo
-                }</p>
+                <p class="e-tc--blue">${valNumnewlines.value == 0
+            ? TotalDsctMiPrimerRecibo(w)
+            : totalDsctMiPrimerRecibo
+          }</p>
               </div>
               <div class="descripcion-plan-plan bg-white">
                 <p></p>
@@ -605,51 +587,36 @@ class RecibosPlanesFamiliares {
               </div>
               <div class="descripcion-plan-devolucion-prorrateo-base bg-white">
                 <p></p>
-                <p>Devolución Prorrateo ${
-                  document.querySelectorAll(
-                    "select[name='plan-base'] option:checked"
-                  )[w].text
-                }</p>
+                <p>Devolución Prorrateo ${document.querySelectorAll(
+            "select[name='plan-base'] option:checked"
+          )[w].text
+          }</p>
                 <p>${calcularDevolucionProrrateo}</p>
               </div>
               <div class="descripcion-plan-cargo-prorrateo-base bg-white">
                 <p></p>
-                <p>Cargo Prorrateo ${
-                  document.querySelectorAll(
-                    "select[name='plan-base'] option:checked"
-                  )[w].text
-                }</p>
+                <p>Cargo Prorrateo ${document.querySelectorAll(
+            "select[name='plan-base'] option:checked"
+          )[w].text
+          }</p>
                 <p>${calcularCargoProrrateoBase}</p>
               </div>
-              ${
-                valNumnewlines.value == 0
-                  ? dsctoPrimerReciboHtmlBase(w)
-                  : dsctoPrimerReciboHtml
-              }
+              ${valNumnewlines.value == 0
+            ? dsctoPrimerReciboHtmlBase(w)
+            : dsctoPrimerReciboHtml
+          }
             </div>`;
 
-        containerReceiptGenerated.insertAdjacentHTML(
-          "beforeend",
-          lineasBaseUnified
-        );
+        containerReceiptGenerated.insertAdjacentHTML("beforeend", lineasBaseUnified);
 
         alphabetCounter++;
       }
 
-      totalPagarSegundoRecibo =
-        parseFloat(selectFamilyPlan.value) +
-        34.9 *
-          (parseFloat(valNumnewlines.value) +
-            parseFloat(valNumbaselines.value) -
-            1);
+      totalPagarSegundoRecibo = parseFloat(selectFamilyPlan.value) + (29.9 * ((parseFloat(valNumnewlines.value) + parseFloat(valNumbaselines.value)) - 1));
 
       const totalRecibo = `<div class="descripcion-total-recibo bg-DCECF4">
-        <p style="color: #000; text-align: center; font-size: 1.2rem;">Total a pagar estimado en primer recibo: <b style="color: #000;">S/${parseFloat(
-          totalPagarPrimerRecibo
-        ).toFixed(2)}</b></p>
-        <p style="color: #000; text-align: center; font-size: 1rem;">Desde segundo recibo: <b style="color: #000;">S/${parseFloat(
-          totalPagarSegundoRecibo
-        ).toFixed(2)}</b></p>
+        <p style="color: #000; text-align: center; font-size: 1.2rem;">Total a pagar estimado en primer recibo: <b style="color: #000;">S/${parseFloat(totalPagarPrimerRecibo).toFixed(2)}</b></p>
+        <p style="color: #000; text-align: center; font-size: 1rem;">Desde segundo recibo: <b style="color: #000;">S/${parseFloat(totalPagarSegundoRecibo).toFixed(2)}</b></p>
       </d>`;
 
       containerReceiptGenerated.insertAdjacentHTML("beforeend", cuentaCliente);
