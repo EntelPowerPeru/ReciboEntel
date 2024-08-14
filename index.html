@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+
+<head>
+  <div hidden><a title="Google Analytics Alternative" href="https://clicky.com/101391284"><img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script async src="//static.getclicky.com/101391284.js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101391284ns.gif" /></p></noscript></div>
+  <title>Recibos plan familiar | Entel Perú</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="title" content="Recibos plan familiar | Entel Perú">
+  <meta name="description">
+  <link rel="canonical" href="">
+  <link
+    href="https://fonts.googleapis.com/css?family=Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+  <link href="recibos-plan-familiar.css?82928e66c68c4b07622c" rel="stylesheet">
+</head>
+
+<body class="entel-body">
+  <div class="bg-c9def8">
+    <section class="recibos-plan-familiar__section recibos-plan-familiar-banner">
+      <div class="circle-desk">
+        <picture class="e-lazy__img heart-rotate">
+          <source
+            data-srcset="/img/recibos-plan-familiar-circle-desk.png  1x, /img/recibos-plan-familiar-circle-desk@2x.png  2x"
+            type="image/png"><img class="e-lazy-js" data-src="/img/recibos-plan-familiar-circle-desk.png "
+            alt="Icono de lp recibos plan familiar">
+        </picture>
+      </div>
+      <div class="e-container">
+        <h2 class="e-title e-tc--blue e-title e-tc--blue" title="¡En familia ahorramos más!">Simulador del primer recibo
+        </h2>
+        <div class="e-w-750 e-m-auto">
+          <p class="e-ta-c">Te mostramos como se facturará el <b>primer recibo</b> con el descuento, de un cliente que
+            adquiere una línea con Entel</p>
+        </div>
+      </div>
+      <div class="trapezoid-right-desk">
+        <picture class="e-lazy__img beat">
+          <source
+            data-srcset=" img/recibos-plan-familiar-trapezoid-right-desk.png  1x, img/recibos-plan-familiar-trapezoid-right-desk@2x.png  2x"
+            type="image/png"><img class="e-lazy-js" data-src=" img/recibos-plan-familiar-trapezoid-right-desk.png "
+            alt="Icono de lp recibos plan familiar">
+        </picture>
+      </div>
+    </section>
+    <section class="recibos-plan-familiar__section recibos-plan-familiar-form">
+      <div class="brightness">
+        <div class="e-container">
+          <h2 class="e-title e-tc--white e-title" title="Ingresa los datos del cliente">
+            Ingresa los datos del cliente
+          </h2>
+          <div class="e-w-750 e-m-auto e-mb-20">
+            <p class="e-ta-c e-tc--white">Cálculo <b><u>estimado</u></b> de tu nuevo plan entel*</p>
+          </div>
+          <form id="recibos-plan-familiar">
+            <div class="recibos-plan-familiar__selectedfamilyplans">
+              <div class="e-input e-input--select e-input--light e-input--small">
+                <select id="plan-familiar" name="plan-familiar">
+                  <option value="">Selecciona el plan contratado por el cliente </option>
+                </select>
+              </div>
+            </div>
+            <div class="recibos-plan-familiar__numberOfNewlinesBaseLines">
+              <div
+                class="e-input e-input--solid e-input--solid--white e-input--light e-input--small">
+                <input type="text" maxlength="60" name="num-new-lines" autocomplete="off" id="num-new-lines">
+                <div></div><span>Número de Líneas Nuevas</span>
+              </div>
+              <div
+                class="e-input e-input--solid e-input--solid--white e-input--light e-input--small">
+                <input type="text" maxlength="60" name="num-base-lines" autocomplete="off" id="num-base-lines">
+                <div></div><span>N° de Líneas Base</span>
+              </div>
+            </div>
+            <div class="recibos-plan-familiar__numberOfNewlinesBaseLines_generated"></div>
+            <div class="recibos-plan-familiar__numberOfNewlinesBaseLines_changedate">
+              <div class="recibos-plan-familiar__numberOfNewlinesBaseLines_changedate_items">
+                <div
+                  class="e-input e-input--solid e-input--solid--white e-input--light e-input--small">
+                    <input type="date" required name="fecha-activacion" class="date" id="fecha-activacion" />  
+                  <div></div>
+                  <span>Fecha de activación de la línea Entel</span>
+                </div>
+                <div class="e-input e-input--select e-input--light e-input--small">
+                  <select id="ciclo-cliente" name="ciclo-cliente">
+                    <option value="">Ciclo de cliente </option>
+                  </select>
+                </div>
+            </div>
+            <div class="recibos-plan-familiar__button">
+              <button class="e-button e-button--disabled" id="e-button-enviar" type="button">GENERAR RECIBO</button>
+              <button class="e-button e-button--orange" id="e-button-reset">NUEVA CONSULTA</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="e-container legend">
+      <p class="legend__paragraph">* ¿Cuales son los cíclos de facturación
+        del cliente?</p>
+      <ul class="legend__list">
+        <li class="legend__item">- Ciclo 01: Del 01 al 28/29/30 o 31</li>
+        <li class="legend__item">- Ciclo 04: Del 09 al 08</li>
+        <li class="legend__item">- Ciclo 03: Del 16 al 15</li>
+        <li class="legend__item">- Ciclo 05: Del 22 al 23</li>
+      </ul>
+
+      <p class="legend__paragraph">* ¿Que es el prorrateo?</p>
+      <ul class="legend__list">
+        <li class="legend__item">
+          - Es el consumo de días adicionales antes que inicie tu periodo de facturación. Se
+          calcula desde el día que se activa la línea o se realiza el cambio de plan hasta un día antes del inicio
+          del ciclo de facturación
+        </li>
+      </ul>
+
+      <p class="legend__paragraph">* Para mejorar la experiencia del
+        cliente toma en cuenta lo siguiente:</p>
+      <ul class="legend__list">
+        <li class="legend__item">- Para el cliente entel que adquiera Líneas Adicionales se debe tener en cuenta 
+          que todas sus líneas, deben tener el mismo plan, CF y perfil de facturación; caso contrario no se gatillará 
+          ningún descuento. </li>
+        <li class="legend__item">- Al pasar a un plan Entel Power con beneficio en líneas adicionales, 
+          en Upselling o mismo cargo fijo, el cliente mantiene el descuento monolínea otorgado en ofertas 
+          anteriores (20%, 30% o 50%).</li>
+      </ul>
+    </div>
+
+    <div class="trapezoid-mob">
+      <picture class="e-lazy__img heart-rotate">
+        <source
+          data-srcset=" img/recibos-plan-familiar-trapezoid-bottom-left-desk.png  1x, img/recibos-plan-familiar-trapezoid-bottom-left-desk@2x.png  2x"
+          media="(min-width: 768px)" type="image/png">
+        <source
+          data-srcset=" img/recibos-plan-familiar-trapezoid-mob.png  1x, img/recibos-plan-familiar-trapezoid-mob@2x.png  2x"
+          type="image/png"><img class="e-lazy-js" data-src=" img/recibos-plan-familiar-trapezoid-mob.png "
+          data-srcset=" img/recibos-plan-familiar-trapezoid-mob.png  1x, img/recibos-plan-familiar-trapezoid-mob@2x.png  2x"
+          alt="Icono de lp recibos plan familiar">
+      </picture>
+    </div>
+    <section class="recibos-plan-familiar__section recibos-plan-familiar-recibo" id="pdf-recibo">
+      <div class="e-container">
+        <h2 class="e-title e-tc--blue e-title e-tc--blue" title="Entendamos tu primer recibo">Entendamos tu primer
+          recibo
+        </h2>
+        <p class="e-ta-c e-tc--default recibos-plan-familiar-recibo-p">Cálculo <b><u>estimado</u></b> de tu siguiente recibo, 
+          <b><u>no incluye servicios adicionales.</u></b>
+        </p>
+        <div class="recibo_igv bg-004FB9 recibo">
+          <div class="recibo_igv_item">
+            <p class="e-tc--white">Conceptos detallados</p>
+          </div>
+          <div class="recibo_igv_item">
+            <p class="e-tc--white">Monto S/(Incl. IGV)</p>
+          </div>
+        </div>
+        <div class="recibo_line_description recibo"></div>
+        <div data-html2canvas-ignore="true" class="recibo_btn_convert_pdf"><a class="e-link e--orange"
+            id="btn-convert-html-to-pdf" href="javascript:void(0)"> Descargar en pdf</a></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"
+    integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+    integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="js/recibos-plan-familiar.js"></script>
+</body>
+
+</html>
