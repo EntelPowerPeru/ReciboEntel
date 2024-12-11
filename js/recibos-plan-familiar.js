@@ -1393,7 +1393,7 @@ fecha_actual = `${fecha_actual.getFullYear()}-${(fecha_actual.getMonth() + 1).to
 document.getElementById("fecha-activacion").max = fecha_actual;
 
 const VARIABLES = {
-  api_url: "https://script.google.com/macros/s/AKfycbw2YeBjZy5paro59BSTMtX1E9kwhAwQqUTrwozneLVOClaudXBEeQILDKW6zF_d_nas-g/exec"
+  api_url: "https://script.google.com/macros/s/AKfycbxbl1XGqim8J1efAVZRFYU6x7CYUrczUECT21hA0Ux2wDkCHypqCI02jenO9VNgDUjO/exec"
 };
 
 const EVENTOS = {
